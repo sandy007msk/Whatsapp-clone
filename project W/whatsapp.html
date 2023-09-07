@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=\, initial-scale=1.0" />
     <link rel="stylesheet" href="whatsapp.css" />
+    <link rel="icon" href="logo-whatsapp.svg">
     <title>Whatsapp Web</title>
   </head>
   <body>
@@ -11,24 +12,24 @@
       <div class="leftside">
         <div class="header">
           <div class="userimg">
-            <img src="wallpaper.jpg" class="cover" />
+            <img src="wallpaper.jpg" class="cover">
           </div>
           <ul class="nav_icons">
-            <li><ion-icon name="scan-circle-outline"></ion-icon></li>
-            <li><ion-icon name="chatbox"></ion-icon></li>
-            <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
+            <li ><button id="status"><ion-icon name="scan-circle-outline" ></ion-icon></button></li>
+            <li><button id="message"><ion-icon name="chatbox" ></ion-icon></button></li>
+            <li><button id="dropdown"><ion-icon name="ellipsis-vertical" ></ion-icon></button></li>
           </ul>
         </div>
 
         <div class="search_chat">
           <div>
-            <input type="text" placeholder="Search or start new chat" />
+            <input type="text" placeholder="Search or start new chat">
             <ion-icon name="search-outline"></ion-icon>
           </div>
         </div>
 
         <div class="chatlist">
-          <div class="block active">
+          <div class="block active" id="Sandy">
             <div class="imgbx">
               <img
                 src="img1.jpeg"
@@ -46,7 +47,7 @@
             </div>
           </div>
 
-          <div class="block unread">
+          <div class="block unread" id="Hanuman">
             <div class="imgbx"><img src="2822855.jpg".jpg" class="cover"></div>
             <div class="details">
               <div class="listhead">
@@ -60,7 +61,7 @@
             </div>
           </div>
 
-          <div class="block unread">
+          <div class="block unread" id="Mousam">
             <div class="imgbx">
               <img
                 src="mousam.jpg"
@@ -86,7 +87,7 @@
                 class="cover"
               />
             </div>
-            <div class="details">
+            <div class="details" id="Maninder">
               <div class="listhead">
                 <h4>Maninder Singh</h4>
                 <p class="time">07:56</p>
@@ -107,7 +108,7 @@
                 class="cover"
               />
             </div>
-            <div class="details">
+            <div class="details" id="Namanr">
               <div class="listhead">
                 <h4>Naman Rohilla</h4>
                 <p class="time">12:56</p>
@@ -150,36 +151,83 @@
                 <p>Hello<br><span>12:15</span></p>
             </div>
             <div class="message frnd_message">
-                <p>My team??<br><span>12:15</span></p>
+                <p>Introducing my team<br><span>12:15</span></p>
             </div>
             <div class="message my_message">
-                <p>Sandeep<br><span>12:15</span></p>
+                <p>Sandeep(2110990905)<br><span>12:15</span></p>
             </div>
             <div class="message my_message">
-                <p>Naman Rohilla<br><span>12:15</span></p>
+                <p>Naman Rohilla(2110990914)<br><span>12:15</span></p>
             </div>
             <div class="message my_message">
-                <p>Mousam<br><span>12:15</span></p>
+                <p>Mousam(2110990890)<br><span>12:15</span></p>
             </div>
             <div class="message frnd_message">
-                <p>Maninder Singh<br><span>12:15</span></p>
+                <p>Maninder Singh(2110990849)<br><span>12:15</span></p>
             </div>
             <div class="message frnd_message">
-                <p>whatsapp clone <br><span>12:15</span></p>
+                <p>this is Whatsapp clone using HTML,CSS and JS<br><span>12:15</span></p>
             </div>
         </div>
+            
+        
         <div class="chatbox_input">
-            <ion-icon name="happy-outline"></ion-icon>
-            <ion-icon name="attach-outline"></ion-icon>
-            <input type="text" placeholder="Type a text">
-            <ion-icon name="send"></ion-icon>
-            <ion-icon name="mic"></ion-icon>
-         </div>
+          <ion-icon name="happy-outline"></ion-icon>
+          <ion-icon name="attach-outline"></ion-icon>
+          <input type="text" class="chat-input" placeholder="Type a text" >
+          
+          <ion-icon name="send" class="chat-send-button"></ion-icon>
+          <ion-icon name="mic"></ion-icon>
+       </div>
+        
       </div>
        
 
     </div>
 
+
+
+    <script>
+      let chatInput = document.querySelector('.chat-input');
+      let chatSend = document.querySelector('.chat-send-button');
+      let chatSpace = document.querySelector('.chatbox');
+
+      chatSend.addEventListener('click', sendMsg);
+
+      function sendMsg(){
+        let msg = chatInput.value.trim();
+        // console.log(msg.length);
+        if(msg.length != 0){
+          addMsg(msg);
+        }
+        chatInput.value = '';
+      }
+
+      function addMsg(e){
+        let div = document.createElement("div");
+        div.classList.add("message","my_message");
+        let p = document.createElement("p");
+        let pre = document.createElement("pre");
+        let span = document.createElement("span");
+        let br = document.createElement('br');
+        
+        let d = new Date();
+        
+        span.textContent = `${d.getHours()}:${d.getMinutes()}`;
+        pre.textContent = e;
+        p.appendChild(pre);
+        p.appendChild(br);
+        p.appendChild(span);
+        
+        div.appendChild(p);
+
+        chatSpace.appendChild(div);
+      }
+
+    </script>
+
+
+     <script src="whatsapp.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
